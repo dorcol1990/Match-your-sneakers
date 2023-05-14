@@ -109,6 +109,7 @@ function checkWin(){
  
         icons.forEach(icon => icon.addEventListener('click', startTime));
         intervalID;
+        alert("radi");
     }
 }
 
