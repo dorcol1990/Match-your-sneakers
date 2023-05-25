@@ -6,11 +6,10 @@ let infoPanel = document.querySelector('.info-panel')
 let closeInfoPanelBtn = document.querySelector('.close-info-panel');
 let restartBtn = document.querySelector('.restartBtn');
 let score = document.querySelector('.score');
-let level = document.querySelector('.level');
 //Arrays
 let shoes = ['<img src="img/img1.png" alt="#">', '<img src="img/img2.png" alt="#">', '<img src="img/img3.png" alt="#">', '<img src="img/img4.png" alt="#">', '<img src="img/img5.png" alt="#">', '<img src="img/img6.png" alt="#">', '<img src="img/img7.png" alt="#">', '<img src="img/img8.png" alt="#">', '<img src="img/img9.png" alt="#">', '<img src="img/img10.png" alt="#">', '<img src="img/img11.png" alt="#">', '<img src="img/img12.png" alt="#">', '<img src="img/img13.png" alt="#">', '<img src="img/img14.png" alt="#">', '<img src="img/img15.png" alt="#">', '<img src="img/img16.png" alt="#">', '<img src="img/img17.png" alt="#">', '<img src="img/img18.png" alt="#">', '<img src="img/img1.png" alt="#">', '<img src="img/img2.png" alt="#">', '<img src="img/img3.png" alt="#">', '<img src="img/img4.png" alt="#">', '<img src="img/img5.png" alt="#">', '<img src="img/img6.png" alt="#">', '<img src="img/img7.png" alt="#">', '<img src="img/img8.png" alt="#">', '<img src="img/img9.png" alt="#">', '<img src="img/img10.png" alt="#">', '<img src="img/img11.png" alt="#">', '<img src="img/img12.png" alt="#">', '<img src="img/img13.png" alt="#">', '<img src="img/img14.png" alt="#">', '<img src="img/img15.png" alt="#">', '<img src="img/img16.png" alt="#">', '<img src="img/img17.png" alt="#">', '<img src="img/img18.png" alt="#">'];
 
-
+let numberOfFIelds = 36;
 makeTables ();
 
 let icons = document.querySelectorAll('.card');
@@ -18,6 +17,7 @@ let twoFlipped = [];
 let intervalID;
 let matchPairs = 0;
 let counter = 100;
+
 
 
 
@@ -41,7 +41,7 @@ function makeTables (){
 
     let html = "";
 
-    for (let i = 0; i < 36; i++){
+    for (let i = 0; i < numberOfFIelds; i++){
         let rand = Math.floor(Math.random() * shoes.length);
         html += `<div class="card">
                     <div class="back"> ${shoes[rand]} </div>
@@ -99,30 +99,15 @@ function returnClicks (){
 function checkWin(){
     if (matchPairs === 18){
         clearInterval(intervalID);
-        matchPairs = [];
-        makeTables();
-        returnClicks();
         makeScore();
-        levelCounter++
-        changesLevel();
-        counter = 100;
- 
-        icons.forEach(icon => icon.addEventListener('click', startTime));
-        intervalID;
-        alert("radi");
     }
 }
-
-
-function changesLevel (){
-    level.innerHTML = levelCounter;
-}
-
 
 function makeScore (){
     let points = counter * 100;
     score.innerHTML += points;
 }
+
 
 function startTime (){
     
